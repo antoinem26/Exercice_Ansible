@@ -35,15 +35,40 @@ Déconnectez-vous et supprimez la VM.
 ## Exercice 2
 
 Répétez l’exercice précédent en configurant un dépôt PPA (Personal Package Archive) pour Ansible :
-
 ```
 $ sudo apt-add-repository ppa:ansible/ansible
 ```
 
 Notez la version fournie par ce dépôt tiers et comparez avec la version officielle de l’exercice précédent.
+``` 
+ansible --version
+    ansible [core 2.17.8]
+// la version est plus réçente que le répo officiel 
+``` 
 
 ## Exercice 3
 
 Lancez une VM Rocky Linux et installez Ansible en utilisant PIP et Virtualenv.
 
-Important /!\ Notez bien que contrairement à Debian, le paquet python3-venv n’est pas nécessaire ici, étant donné que Virtualenv fait partie des modules standard de Python dans cette distribution.
+
+```
+vagrant up rocky
+vagrant ssh rocky
+sudo dnf install python3 python3-pip
+pip3 install virtualenv
+virtualenv ansible-env
+source ansible-env/bin/activate
+pip install ansible
+```
+```
+ansible --version
+    
+```
+```
+deactivate
+exit
+vagrant destroy
+```
+
+
+
