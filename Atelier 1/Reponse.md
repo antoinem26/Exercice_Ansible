@@ -38,37 +38,46 @@ Répétez l’exercice précédent en configurant un dépôt PPA (Personal Packa
 ```
 $ sudo apt-add-repository ppa:ansible/ansible
 ```
-
 Notez la version fournie par ce dépôt tiers et comparez avec la version officielle de l’exercice précédent.
+
 ``` 
 ansible --version
     ansible [core 2.17.8]
-// la version est plus réçente que le répo officiel 
 ``` 
+**la version est plus récente que le dépôt officiel**
 
 ## Exercice 3
 
 Lancez une VM Rocky Linux et installez Ansible en utilisant PIP et Virtualenv.
 
-
+Création et connexion : 
 ```
 vagrant up rocky
 vagrant ssh rocky
+```
+Installation de ansible sur un venv python : 
+```
 sudo dnf install python3 python3-pip
 pip3 install virtualenv
 virtualenv ansible-env
 source ansible-env/bin/activate
 pip install ansible
 ```
+**ansible --version** : 
 ```
-ansible --version
-    
+ansible [core 2.15.13]
+  config file = None
+  configured module search path = ['/home/vagrant/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/vagrant/ansible-env/lib/python3.9/site-packages/ansible
+  ansible collection location = /home/vagrant/.ansible/collections:/usr/share/ansible/collections
+  executable location = /home/vagrant/ansible-env/bin/ansible
+  python version = 3.9.21 (main, Dec  5 2024, 00:00:00) [GCC 11.5.0 20240719 (Red Hat 11.5.0-2)] (/home/vagrant/ansible-env/bin/python)
+  jinja version = 3.1.5
+  libyaml = True
 ```
+Destruction de la VM : 
 ```
 deactivate
 exit
 vagrant destroy
 ```
-
-
-
