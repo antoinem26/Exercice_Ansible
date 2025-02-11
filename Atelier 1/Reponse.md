@@ -1,46 +1,57 @@
 ## Exercice 1
 
-Démarrez la VM ubuntu depuis le répertoire atelier-01.
+Démarrez la VM ubuntu depuis le répertoire atelier-01 : 
 
 ```vagrant up ubuntu```
 
-Connectez-vous à cette VM.
+Connectez-vous à cette VM :
 
 ```vagrant ssh ubuntu```
 
-Rafraîchissez les informations sur les paquets.
+Rafraîchissez les informations sur les paquets :
 
 ```sudo apt update```
 
-Recherchez le paquet ansible avec les options qui vont bien.
+Recherchez le paquet ansible avec les options qui vont bien :
 
 ```apt search --names-only ansible ```
 
-Installez le paquet officiel fourni par la distribution.
+Installez le paquet officiel fourni par la distribution :
 
 ```sudo apt install ansible ```
 
-Vérifiez si l’installation s’est bien déroulée.
+Vérifiez si l’installation s’est bien déroulée :
 
 ```ansible --version```
 
-Notez la version d’Ansible.
+Notez la version d’Ansible :
 
 ```ansible 2.10.8```
 
-Déconnectez-vous et supprimez la VM.
+Déconnectez-vous et supprimez la VM :
 
 ```vagrant destroy -f ubuntu```
 
 ## Exercice 2
 
-Répétez l’exercice précédent en configurant un dépôt PPA (Personal Package Archive) pour Ansible :
+Je répète les étapes précédantes : 
+```bash
+vagrant up ubuntu
+vagrant ssh ubuntu
+sudo apt update
 ```
-$ sudo apt-add-repository ppa:ansible/ansible
-```
-Notez la version fournie par ce dépôt tiers et comparez avec la version officielle de l’exercice précédent.
 
-``` 
+Je rajoute la configuration d'un dépôt PPA pour Ansible :
+```bash
+sudo apt-add-repository ppa:ansible/ansible
+```
+J'installe ansible à partir du PPA: 
+
+```bash
+sudo apt install ansible 
+```
+La version fournie par ce dépôt est : 
+``` bash
 ansible --version
     ansible [core 2.17.8]
 ``` 
@@ -51,12 +62,12 @@ ansible --version
 Lancez une VM Rocky Linux et installez Ansible en utilisant PIP et Virtualenv.
 
 Création et connexion : 
-```
+```bash
 vagrant up rocky
 vagrant ssh rocky
 ```
 Installation de ansible sur un venv python : 
-```
+```bash
 sudo dnf install python3 python3-pip
 pip3 install virtualenv
 virtualenv ansible-env
@@ -64,7 +75,7 @@ source ansible-env/bin/activate
 pip install ansible
 ```
 **ansible --version** : 
-```
+```bash
 ansible [core 2.15.13]
   config file = None
   configured module search path = ['/home/vagrant/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
@@ -76,7 +87,7 @@ ansible [core 2.15.13]
   libyaml = True
 ```
 Destruction de la VM : 
-```
+```bash
 deactivate
 exit
 vagrant destroy
