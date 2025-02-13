@@ -90,7 +90,6 @@ debian                     : ok=5    changed=0    unreachable=0    failed=0    s
 Playbook `apache-rocky.yml` :
 
 ```yaml
----  # apache-rocky.yml
 
 - hosts: rocky
 
@@ -153,8 +152,6 @@ rocky                      : ok=4    changed=0    unreachable=0    failed=0    s
 Playbook `apache-suse.yml` :
 
 ```yaml
----  # apache-suse.yml
-
 - hosts: suse
 
     tasks:
