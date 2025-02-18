@@ -73,18 +73,12 @@ vim chrony-01.yml
       stat:
         path: /etc/chrony/chrony.conf
       register: chrony_conf
-
+    
     - name: Create empty chrony.conf if it does not exist
       copy:
         dest: /etc/chrony/chrony.conf
         content: ""
       when: not chrony_conf.stat.exists
-
-    - name: Backup original chrony.conf
-      command: mv /etc/chrony/chrony.conf /etc/chrony/chrony.conf.bak
-      args:
-        creates: /etc/chrony/chrony.conf.bak
-      when: chrony_conf.stat.exists
 
     - name: Install custom chrony configuration
       copy:

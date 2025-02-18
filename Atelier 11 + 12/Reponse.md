@@ -67,7 +67,9 @@ vim chrony.yml
           makestep 1.0 3
           rtcsync
           logdir /var/log/chrony
+      notify: Restart chronyd service
 
+  handlers:
     - name: Restart chronyd service
       service:
         name: chronyd
